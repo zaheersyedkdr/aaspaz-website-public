@@ -1,67 +1,93 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to get base path for links
-    function getBasePath() {
-        const pathSegments = window.location.pathname.split('/').filter(Boolean);
-        const isInPagesDirectory = pathSegments.includes('pages');
-        return isInPagesDirectory ? '../' : './';
-    }
-
-    // Function to get current page name
-    function getCurrentPage() {
-        const path = window.location.pathname;
-        const pageName = path.split('/').pop().replace('.html', '');
-        return pageName || 'index';
-    }
-
-    const basePath = getBasePath();
-    const currentPage = getCurrentPage();
-
-    const navHTML = `
-        <div class="moving-banner">
-            <div class="banner-content">
-                🚀 Now delivering in major cities! • Free delivery on orders above ₹99 • 10-minute delivery guaranteed • Support local stores 🏪
-            </div>
-        </div>
-
-        <header class="header">
-            <div class="container header-container">
-                <a href="${basePath}index.html" class="logo">Aaspaz</a>
-                <nav class="nav-links">
-                    <a href="${basePath}index.html" class="${currentPage === 'index' ? 'active' : ''}">Home</a>
-                    <a href="${basePath}pages/about.html" class="${currentPage === 'about' ? 'active' : ''}">About</a>
-                    <a href="${basePath}pages/contact.html" class="${currentPage === 'contact' ? 'active' : ''}">Contact</a>
-                    <a href="#download" class="btn-secondary">Download App</a>
-                    <a href="${basePath}pages/partner.html" class="${currentPage === 'partner' ? 'active' : ''} btn-primary">Partner with us</a>
-                </nav>
-                <button class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </header>
-    `;
-
-    // Insert the navigation at the start of the body
-    document.body.insertAdjacentHTML('afterbegin', navHTML);
-
-    // Add mobile menu functionality
+    // Get the mobile menu toggle button and nav links
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    mobileMenuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-        this.classList.toggle('active');
+    // Function to toggle menu state
+    function toggleMenu(show) {
+        if (navLinks) {
+            if (show === undefined) {
+                // If no state is provided, toggle based on current state
+                show = !navLinks.classList.contains('show');
+            }
+            
+            navLinks.classList.toggle('show', show);
+            document.body.classList.toggle('menu-open', show);
+            
+            const icon = mobileMenuToggle.querySelector('i');
+            if (icon) {
+                if (show) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        }
+    }
+
+    // Toggle mobile menu
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default button behavior
+            e.stopPropagation(); // Prevent click from bubbling to document
+            toggleMenu(); // Toggle menu state
+            console.log('Mobile menu toggled'); // For debugging
+        });
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (navLinks && navLinks.classList.contains('show')) {
+            const isClickInsideNav = navLinks.contains(event.target);
+            const isClickOnToggle = mobileMenuToggle && mobileMenuToggle.contains(event.target);
+            
+            if (!isClickInsideNav && !isClickOnToggle) {
+                toggleMenu(false);
+            }
+        }
+    });
+
+    // Close mobile menu when window is resized to desktop size
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && navLinks && navLinks.classList.contains('show')) {
+            toggleMenu(false);
+        }
     });
 
     // Add smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return; // Skip empty hash links
+            
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth'
                 });
+                // Close mobile menu after clicking a link
+                if (navLinks && navLinks.classList.contains('show')) {
+                    toggleMenu(false);
+                }
             }
         });
     });
+
+    // Initialize menu state on page load
+    if (mobileMenuToggle && navLinks) {
+        // Make sure menu is closed by default on mobile
+        if (window.innerWidth <= 768) {
+            navLinks.classList.remove('show');
+            document.body.classList.remove('menu-open');
+            
+            const icon = mobileMenuToggle.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    }
 }); 
