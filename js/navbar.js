@@ -2,59 +2,62 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get the mobile menu toggle button and nav links
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const movingBanner = document.querySelector('.moving-banner');
 
-    // Function to toggle menu state
-    function toggleMenu(show) {
-        if (navLinks) {
-            if (show === undefined) {
-                // If no state is provided, toggle based on current state
-                show = !navLinks.classList.contains('show');
+    // Function to handle responsive navigation
+    function handleResponsiveNav() {
+        if (window.innerWidth <= 768) {
+            // On mobile, hide the regular nav and mobile toggle, but show the "Partner with us" button
+            if (mobileMenuToggle) mobileMenuToggle.style.display = 'none';
+            if (navLinks) {
+                navLinks.classList.add('mobile-partner-btn');
+                navLinks.classList.remove('show', 'active');
+                
+                // Apply styles directly to nav container
+                navLinks.style.display = 'flex';
+                navLinks.style.justifyContent = 'flex-end';
+                navLinks.style.width = 'auto';
+                
+                // Make sure only the Partner with us button is visible
+                const navLinks_items = navLinks.querySelectorAll('a');
+                navLinks_items.forEach(item => {
+                    if (item.classList.contains('btn-primary')) {
+                        item.style.display = 'inline-block';
+                        item.style.marginLeft = 'auto'; // Push to the right
+                        item.style.padding = '0.5rem 1rem';
+                        item.style.fontSize = '0.9rem';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
             }
-            
-            navLinks.classList.toggle('show', show);
-            document.body.classList.toggle('menu-open', show);
-            
-            const icon = mobileMenuToggle.querySelector('i');
-            if (icon) {
-                if (show) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+            document.body.classList.remove('menu-open');
+        } else {
+            // On desktop, restore normal navigation
+            if (mobileMenuToggle) mobileMenuToggle.style.display = 'none';
+            if (navLinks) {
+                navLinks.classList.remove('mobile-partner-btn');
+                navLinks.style.display = '';
+                navLinks.style.justifyContent = '';
+                navLinks.style.width = '';
+                
+                // Reset display of all nav items
+                const navLinks_items = navLinks.querySelectorAll('a');
+                navLinks_items.forEach(item => {
+                    item.style.display = '';
+                    item.style.marginLeft = '';
+                    item.style.padding = '';
+                    item.style.fontSize = '';
+                });
             }
         }
     }
 
-    // Toggle mobile menu
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent default button behavior
-            e.stopPropagation(); // Prevent click from bubbling to document
-            toggleMenu(); // Toggle menu state
-            console.log('Mobile menu toggled'); // For debugging
-        });
-    }
+    // Run on page load
+    handleResponsiveNav();
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (navLinks && navLinks.classList.contains('show')) {
-            const isClickInsideNav = navLinks.contains(event.target);
-            const isClickOnToggle = mobileMenuToggle && mobileMenuToggle.contains(event.target);
-            
-            if (!isClickInsideNav && !isClickOnToggle) {
-                toggleMenu(false);
-            }
-        }
-    });
-
-    // Close mobile menu when window is resized to desktop size
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && navLinks && navLinks.classList.contains('show')) {
-            toggleMenu(false);
-        }
-    });
+    // Run on window resize
+    window.addEventListener('resize', handleResponsiveNav);
 
     // Add smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -68,26 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 target.scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Close mobile menu after clicking a link
-                if (navLinks && navLinks.classList.contains('show')) {
-                    toggleMenu(false);
-                }
             }
         });
     });
-
-    // Initialize menu state on page load
-    if (mobileMenuToggle && navLinks) {
-        // Make sure menu is closed by default on mobile
-        if (window.innerWidth <= 768) {
-            navLinks.classList.remove('show');
-            document.body.classList.remove('menu-open');
-            
-            const icon = mobileMenuToggle.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        }
-    }
 }); 

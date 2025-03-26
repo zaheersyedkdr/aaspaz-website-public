@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <h4>Contact</h4>
                                 <ul class="footer-contact">
                                     <li><i class="fas fa-phone"></i> +91 9999999999</li>
-                                    <li><i class="fas fa-envelope"></i>admin@aaspaz.com</li>
+                                    <li><i class="fas fa-envelope"></i> admin@aaspaz.com</li>
                                     <li><i class="fas fa-map-marker-alt"></i> Pune, Maharashtra, India</li>
                                 </ul>
                             </div>
