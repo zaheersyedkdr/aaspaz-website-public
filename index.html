@@ -1,414 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaspaz - Food Delivery</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Aaspaz - 10-Minute Grocery Delivery</title>
+    <meta name="description"
+        content="Get groceries, fruits, and daily essentials delivered to your doorstep in 10 minutes with Aaspaz. Order now for the fastest delivery in your area!">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #00ccbc;
-            --secondary-color: #2e3333;
-            --text-color: #2e3333;
-            --background-color: #f9fafa;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'IBM Plex Sans', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.5;
-        }
-
-        /* Moving Banner Styles */
-        .moving-banner {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 0.5rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1001;
-            overflow: hidden;
-        }
-
-        .banner-content {
-            white-space: nowrap;
-            animation: scrollBanner 20s linear infinite;
-            display: inline-block;
-        }
-
-        @keyframes scrollBanner {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .header {
-            background-color: var(--white);
-            padding: 1rem 0;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-            position: fixed;
-            width: 100%;
-            top: 2rem;
-            z-index: 1000;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .main-content {
-            margin-top: 120px;
-            padding: 4rem 2rem;
-            position: relative;
-        }
-
-        /* Background Image Overlay */
-        .main-content::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('./img/veggies1.jpg') center/cover no-repeat;
-            opacity: 1;
-            z-index: -1;
-        }
-
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 4rem 0;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            color: var(--secondary-color);
-            line-height: 1.2;
-        }
-
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: 2px solid #e8ebeb;
-            border-radius: 8px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .search-input:focus {
-            border-color: var(--primary-color);
-        }
-
-        .search-button {
-            padding: 1rem 2rem;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .search-button:hover {
-            background-color: #00b3a4;
-        }
-
-        .features {
-            max-width: 1200px;
-            margin: 4rem auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-
-        .cta-section {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 4rem 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .app-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .app-button {
-            padding: 1rem 2rem;
-            background-color: var(--white);
-            color: var(--primary-color);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 4rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: #9aa0a6;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--white);
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 0 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .search-container {
-                flex-direction: column;
-            }
-
-            .app-buttons {
-                flex-direction: column;
-            }
-
-            .main-content {
-                margin-top: 140px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
+
 <body>
     <div class="moving-banner">
         <div class="banner-content">
-            🎉 Welcome to Aaspaz! We are launching soon in your cities • Free delivery on orders above ₹99 • Support local stores • Fast and reliable delivery 🚀
+            🚀 Now delivering in major cities! • Free delivery on orders above ₹99 • 10-minute delivery guaranteed •
+            Support local stores 🏪
         </div>
     </div>
 
     <header class="header">
-        <div class="header-container">
+        <div class="container header-container">
             <a href="#" class="logo">Aaspaz</a>
             <nav class="nav-links">
-                <a href="#">Partner with us</a>
-                <a href="#">Sign up</a>
-                <a href="#">Log in</a>
+                <a href="#" class="active">Home</a>
+                <a href="pages/about.html">About</a>
+                <a href="pages/contact.html">Contact</a>
+                <!-- <a href="pages/faq.html">FAQs</a> -->
+                <a href="#download" class="btn-secondary">Download App</a>
+                <a href="pages/partner.html" class="btn-primary">Partner with us</a>
             </nav>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <main class="main-content">
-        <section class="hero">
-            <h1>Fresh groceries, fruits, daily essentials.<br>Delivered to your doorstep.</h1>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Enter your postcode">
-                <button class="search-button" onclick="alert('Coming soon to your area!')">Search</button>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-enhanced">
+            <div class="hero-bg"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 data-aos="fade-up">Your daily essentials delivered in <span class="highlight">10 minutes</span>
+                    </h1>
+                    <p data-aos="fade-up" data-aos-delay="100">Fresh groceries, fruits, vegetables, and more from your
+                        favorite local stores, right at your doorstep</p>
+                    <div class="hero-cta" data-aos="fade-up" data-aos-delay="200">
+                        <div class="search-container">
+                            <div class="search-input-wrapper">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" class="form-control" placeholder="Enter your location">
+                            </div>
+                            <button class="btn btn-primary">Find Stores</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left">
+                    <img src="images/hero-delivery.svg" alt="Fast Delivery">
+
+                </div>
+            </div>
+            <div class="hero-wave">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 260">
+                    <path fill="#ffffff" fill-opacity="1"
+                        d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,213.3C672,224,768,224,864,202.7C960,181,1056,139,1152,133.3C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    </path>
+                </svg>
             </div>
         </section>
 
-        <section class="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-clock"></i>
+
+
+        <!-- Features Section -->
+        <section class="features-enhanced">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">WHY CHOOSE US</span>
+                    <h2>The Aaspaz Advantage</h2>
+                    <p>Experience the best in grocery delivery with benefits designed for your convenience</p>
                 </div>
-                <h3>Quick Delivery</h3>
-                <p>Get your groceries delivered in minutes, right to your door</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
+                <div class="features-grid-enhanced" data-aos="fade-left">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Unmatched Speed</h3>
+                        <p>Lightning-fast delivery of your essentials, right when you need them</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3>Local Stores</h3>
+                        <p>Support your neighborhood stores while enjoying the convenience of online ordering</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Fresh Products</h3>
+                        <p>Handpicked fresh fruits, vegetables, and groceries of the highest quality</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safe Delivery</h3>
+                        <p>Contactless delivery and secure payment options for your safety</p>
+                    </div>
+                </div>
+                <!-- <div class="two-column-grid">
+                    <div class="benefits-card" data-aos="fade-right">
+                        <h3>What Sets Us Apart</h3>
+                        <p class="section-intro">We're revolutionizing grocery delivery with our lightning-fast service and commitment to quality. Here's what makes us different:</p>
+                        <ul class="benefits-list">
+                            <li>
+                                <i class="fas fa-bolt"></i>
+                                <div>
+                                    <h4>Unmatched Speed</h4>
+                                    <p>Our 10-minute delivery guarantee means you never have to wait long for your essentials. Our strategically located dark stores ensure we're always close to you.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-store"></i>
+                                <div>
+                                    <h4>Supporting Local</h4>
+                                    <p>We partner with neighborhood stores to bring you familiar products while supporting local businesses. Every order helps strengthen your community.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-leaf"></i>
+                                <div>
+                                    <h4>Fresh Guarantee</h4>
+                                    <p>We personally check all products to ensure you receive only the freshest items. If you're not satisfied, we'll replace it immediately.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <h4>Safe & Secure</h4>
+                                    <p>Contactless delivery options, secure payment processing, and careful handling of your groceries for complete peace of mind.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="features-grid-enhanced" data-aos="fade-left">
+                        <div class="feature-card">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>10-Minute Delivery</h3>
+                            <p>Lightning-fast delivery of your essentials, right when you need them</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-wrapper">
                     <i class="fas fa-store"></i>
                 </div>
                 <h3>Local Stores</h3>
-                <p>Reliable and trusted local stores</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <h3>Real-time Tracking</h3>
-                <p>Track your order in real-time from store to your location</p>
+                            <p>Support your neighborhood stores while enjoying the convenience of online ordering</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h3>Fresh Products</h3>
+                            <p>Handpicked fresh fruits, vegetables, and groceries of the highest quality</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Safe Delivery</h3>
+                            <p>Contactless delivery and secure payment options for your safety</p>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </section>
 
-        <section class="cta-section">
-            <div class="cta-content">
-                <h2>Download the Aaspaz App</h2>
-                <p>Order from your favorite stores and track deliveries in real-time</p>
-                <div class="app-buttons">
-                    <a href="#" class="app-button">
-                        <i class="fab fa-apple"></i>
-                        Download on App Store
-                    </a>
-                    <a href="#" class="app-button">
-                        <i class="fab fa-google-play"></i>
-                        Get it on Google Play
-                    </a>
+        <!-- How It Works Section -->
+        <section class="how-it-works-enhanced">
+            <div class="section-bg-dots"></div>
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">SIMPLE PROCESS</span>
+                    <h2>How Aaspaz Works</h2>
+                    <p>Getting your essentials is as easy as 1-2-3-4</p>
+                </div>
+
+
+                <div class="process-steps" data-aos="fade-right">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3>Enter Location</h3>
+                            <p>Share your location or enter your address to find nearby stores</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3>Choose Products</h3>
+                            <p>Browse through a wide range of products from local stores</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <h3>Place Order</h3>
+                            <p>Add items to cart and choose your preferred payment method</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <div class="step-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <h3>Quick Delivery</h3>
+                            <p>Get your order delivered to your doorstep in 10 minutes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="process-image-wrapper" data-aos="fade-left">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="app-screen">
+                                    <div class="app-header">
+                                        <div class="app-title">Aaspaz</div>
+                                    </div>
+                                    <div class="app-content">
+                                        <div class="app-search">
+                                            <i class="fas fa-search"></i>
+                                            <span>Search products</span>
+                                        </div>
+                                        <div class="app-categories">
+                                            <div class="app-category">
+                                                <i class="fas fa-apple-alt"></i>
+                                                <span>Fruits</span>
+                                            </div>
+                                            <div class="app-category">
+                                                <i class="fas fa-carrot"></i>
+                                                <span>Veggies</span>
+                                            </div>
+                                            <div class="app-category">
+                                                <i class="fas fa-egg"></i>
+                                                <span>Dairy</span>
+                                            </div>
+                                        </div>
+                                        <div class="app-products">
+                                            <div class="app-product">
+                                                <div class="product-img"></div>
+                                                <div class="product-info">
+                                                    <div class="product-name">Fresh Apples</div>
+                                                    <div class="product-price">₹99</div>
+                                                </div>
+                                            </div>
+                                            <div class="app-product">
+                                                <div class="product-img"></div>
+                                                <div class="product-info">
+                                                    <div class="product-name">Milk 1L</div>
+                                                    <div class="product-price">₹60</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+            </div>
+        </section>
+
+        <!-- App Download Section -->
+        <section id="download" class="cta-enhanced">
+            <div class="container">
+                <div class="cta-grid">
+                    <div class="cta-content" data-aos="fade-right">
+                        <span class="section-tag">DOWNLOAD NOW</span>
+                        <h2>Get Started with Aaspaz</h2>
+                        <p>Download our app and experience the fastest delivery service in your area. Order groceries,
+                            fruits, vegetables and more with just a few taps.</p>
+                        <div class="app-badges">
+                            <a href="#" class="app-badge">
+                                <i class="fab fa-apple"></i>
+                                <div class="badge-text">
+                                    <span>Download on the</span>
+                                    <strong>App Store</strong>
+                                </div>
+                            </a>
+                            <a href="#" class="app-badge">
+                                <i class="fab fa-google-play"></i>
+                                <div class="badge-text">
+                                    <span>Get it on</span>
+                                    <strong>Google Play</strong>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="app-qr">
+                            <div class="qr-code">
+                                <img src="images/qr-code.png" alt="QR Code"
+                                    style="max-width: 150px; height: auto; margin-bottom: 1rem;">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="process-image-wrapper" data-aos="fade-left">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="app-screen">
+                                    <div class="app-header">
+                                        <div class="app-title">Aaspaz</div>
+                                    </div>
+                                    <div class="app-content">
+                                        <div class="app-search">
+                                            <i class="fas fa-search"></i>
+                                            <span>Search products</span>
+                                        </div>
+                                        <div class="app-categories">
+                                            <div class="app-category">
+                                                <i class="fas fa-apple-alt"></i>
+                                                <span>Fruits</span>
+                                            </div>
+                                            <div class="app-category">
+                                                <i class="fas fa-carrot"></i>
+                                                <span>Veggies</span>
+                                            </div>
+                                            <div class="app-category">
+                                                <i class="fas fa-egg"></i>
+                                                <span>Dairy</span>
+                                            </div>
+                                        </div>
+                                        <div class="app-products">
+                                            <div class="app-product">
+                                                <div class="product-img"></div>
+                                                <div class="product-info">
+                                                    <div class="product-name">Fresh Apples</div>
+                                                    <div class="product-price">₹99</div>
+                                                </div>
+                                            </div>
+                                            <div class="app-product">
+                                                <div class="product-img"></div>
+                                                <div class="product-info">
+                                                    <div class="product-name">Milk 1L</div>
+                                                    <div class="product-price">₹60</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-enhanced">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">TESTIMONIALS</span>
+                    <h2>What Our Customers Say</h2>
+                    <p>Don't just take our word for it - hear from our satisfied customers</p>
+                </div>
+
+                <!-- Stats Section -->
+
+                <section class="stats-section">
+                    <div class="container">
+                        <div class="stats-grid">
+                            <div class="stat-item" data-aos="fade-up">
+                                <div class="stat-number">10<span>min</span></div>
+                                <p>Delivery Time</p>
+                            </div>
+                            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                                <div class="stat-number">500+</div>
+                                <p>Partner Stores</p>
+                            </div>
+                            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                                <div class="stat-number">10K+</div>
+                                <p>Happy Customers</p>
+                            </div>
+                            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                                <div class="stat-number">5+</div>
+                                <p>Cities Covered</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="testimonial-slider" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="testimonial-profile">
+                            <div class="profile-image"></div>
+                            <div class="profile-info">
+                                <h4>Rahul S.</h4>
+                                <p>Regular Customer</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Incredibly fast delivery! Got my groceries in just 8 minutes. The
+                            app is super easy to use and the delivery person was very professional. Will definitely keep
+                            using Aaspaz."</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-profile">
+                            <div class="profile-image"></div>
+                            <div class="profile-info">
+                                <h4>Priya M.</h4>
+                                <p>New User</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Fresh fruits and vegetables every time. Love supporting local
+                            stores through Aaspaz. The quality of products is amazing and I appreciate the sustainable
+                            packaging."</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-profile">
+                            <div class="profile-image"></div>
+                            <div class="profile-info">
+                                <h4>Amit K.</h4>
+                                <p>Weekly Shopper</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Best delivery service I've used. The 10-minute delivery is a
+                            game-changer! I no longer need to plan my grocery shopping in advance knowing Aaspaz will
+                            deliver quickly."</p>
+                    </div>
+                </div>
+
+                <div class="testimonial-pagination" data-aos="fade-up">
+                    <span class="pagination-dot active"></span>
+                    <span class="pagination-dot"></span>
+                    <span class="pagination-dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-content" data-aos="fade-up">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter for exclusive offers, updates, and tips</p>
+                    <form class="newsletter-form">
+                        <div class="form-input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Your email address" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner CTA Section -->
+        <section class="partner-cta">
+            <div class="container">
+                <div class="partner-cta-grid">
+                    <div class="partner-cta-content" data-aos="fade-right">
+                        <h2>Own a Grocery Store?</h2>
+                        <p>Join our network of 500+ store partners and boost your business with Aaspaz. Expand your
+                            customer base and increase your revenue without any upfront investment.</p>
+                        <a href="pages/partner.html" class="btn btn-primary">Partner with Us</a>
+                    </div>
+                    <div class="partner-cta-image" data-aos="fade-left">
+                        <img src="images/store-partner.svg" alt="Become a Partner">
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Aaspaz</h4>
-                <ul class="footer-links">
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Partner with us</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                    <li><a href="#">Modern Slavery Statement</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Help</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Cuisines</a></li>
-                    <li><a href="#">Site Map</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Business</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Add your store</a></li>
-                    <li><a href="#">Corporate accounts</a></li>
-                    <li><a href="#">Delivery with us</a></li>
-                    <li><a href="#">Restaurant signup</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- <script src="js/navbar.js"></script> -->
+    <script src="js/footer.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Testimonial slider
+        const dots = document.querySelectorAll('.pagination-dot');
+        const testimonials = document.querySelectorAll('.testimonial-card');
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                // Remove active class from all dots
+                dots.forEach(d => d.classList.remove('active'));
+                // Add active class to clicked dot
+                dot.classList.add('active');
+
+                // Hide all testimonials
+                testimonials.forEach(t => t.classList.remove('active'));
+                // Show selected testimonial
+                if (testimonials[index]) {
+                    testimonials[index].classList.add('active');
+                }
+            });
+        });
+
+        // Auto slide testimonials
+        let currentSlide = 0;
+        const autoSlide = () => {
+            currentSlide = (currentSlide + 1) % dots.length;
+            dots[currentSlide].click();
+        };
+
+        // Start auto slide
+        let slideInterval = setInterval(autoSlide, 5000);
+
+        // Pause auto slide on hover
+        const sliderContainer = document.querySelector('.testimonial-slider');
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        sliderContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(autoSlide, 5000);
+        });
+
+        // Make first testimonial active
+        testimonials[0].classList.add('active');
+    </script>
 </body>
+
 </html>

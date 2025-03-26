@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner with Aaspaz - Quick Commerce Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="moving-banner">
+        <div class="banner-content">
+            🚀 Join Aaspaz as a retail partner and grow your business! • Reach more customers • Increase your revenue • Easy onboarding process
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">Aaspaz</a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <!-- <a href="faq.html">FAQs</a> -->
+                <a href="../index.html#download" class="btn-secondary">Download App</a>
+                <a href="partner.html"  class="btn-primary">Partner with us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Partner with Aaspaz</h1>
+                <p>Join the future of quick commerce and expand your business reach</p>
+            </div>
+        </section>
+
+        <section class="partner-section">
+            <div class="container">
+                <div class="two-column-grid">
+                    <!-- Form Column -->
+                    <div class="form-column">
+                        <div class="partner-form">
+                            <h2>Register Your Interest</h2>
+                            <form id="partnerForm" action="mailto:admin@aaspaz.com" method="GET" enctype="text/plain">
+                                <div class="form-group">
+                                    <label class="form-label" for="storeName">Store Name *</label>
+                                    <input type="text" id="storeName" name="storeName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="storeType">Store Type *</label>
+                                    <select id="storeType" name="storeType" class="form-control" required>
+                                        <option value="">Select store type</option>
+                                        <option value="grocery">Grocery Store</option>
+                                        <option value="fruits">Fruits & Vegetables</option>
+                                        <option value="pharmacy">Pharmacy</option>
+                                        <option value="convenience">Convenience Store</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="location">Store Location *</label>
+                                    <input type="text" id="location" name="location" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="name">Contact Person Name *</label>
+                                    <input type="text" id="name" name="name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="message">Additional Information</label>
+                                    <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Benefits Column -->
+                    <div class="benefits-column">
+                        <div class="benefits-card">
+                            <h3>Why Partner with Aaspaz?</h3>
+                            <ul class="benefits-list">
+                                <li>
+                                    <i class="fas fa-chart-line"></i>
+                                    <div>
+                                        <h4>Grow Your Business</h4>
+                                        <p>Reach thousands of new customers and increase your revenue</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-truck"></i>
+                                    <div>
+                                        <h4>Quick Delivery</h4>
+                                        <p>We handle the delivery logistics within 10 minutes</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <div>
+                                        <h4>Easy Management</h4>
+                                        <p>User-friendly dashboard for orders and inventory</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-percentage"></i>
+                                    <div>
+                                        <h4>Zero Commission</h4>
+                                        <p>For the first month of partnership</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-headset"></i>
+                                    <div>
+                                        <h4>24/7 Support</h4>
+                                        <p>Dedicated partner support team at your service</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Add event listener to format the subject line
+        document.querySelector('#partnerForm').addEventListener('submit', function(e) {
+            const storeName = document.querySelector('#storeName').value;
+            this.action = `mailto:admin@aaspaz.com?subject=[PARTNER_REGISTRATION] - ${encodeURIComponent(storeName)}`;
+        });
+    </script>
+</body>
+</html> 

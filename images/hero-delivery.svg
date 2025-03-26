@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="400" viewBox="0 0 500 400">
+  <style>
+    .primary { fill: #00ccbc; }
+    .secondary { fill: #2e3333; }
+    .accent { fill: #f9fafa; }
+    .shadow { fill: rgba(0,0,0,0.1); }
+  </style>
+  
+  <!-- Delivery Van -->
+  <g transform="translate(50, 200)">
+    <rect x="0" y="50" width="300" height="100" rx="20" class="primary" />
+    <rect x="0" y="100" width="300" height="50" rx="10" class="secondary" />
+    <rect x="250" y="50" width="100" height="80" rx="10" class="secondary" />
+    <circle cx="80" cy="150" r="30" class="secondary" />
+    <circle cx="80" cy="150" r="15" class="accent" />
+    <circle cx="250" cy="150" r="30" class="secondary" />
+    <circle cx="250" cy="150" r="15" class="accent" />
+    <rect x="280" y="60" width="50" height="40" rx="5" class="accent" />
+    <text x="150" y="90" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" class="accent">AASPAZ</text>
+  </g>
+  
+  <!-- Delivery Box -->
+  <g transform="translate(320, 100)">
+    <rect x="0" y="0" width="100" height="100" class="secondary" />
+    <rect x="10" y="10" width="80" height="80" class="accent" />
+    <rect x="20" y="40" width="60" height="20" class="primary" />
+    <ellipse cx="50" cy="120" rx="30" ry="10" class="shadow" />
+  </g>
+  
+  <!-- Delivery Person -->
+  <g transform="translate(180, 120)">
+    <circle cx="50" cy="30" r="30" class="primary" />
+    <circle cx="40" cy="25" r="5" class="secondary" />
+    <circle cx="60" cy="25" r="5" class="secondary" />
+    <path d="M40,40 Q50,50 60,40" stroke-width="3" stroke="#2e3333" fill="none" />
+    <rect x="30" y="60" width="40" height="60" class="secondary" />
+    <rect x="20" y="120" width="20" height="40" class="secondary" />
+    <rect x="60" y="120" width="20" height="40" class="secondary" />
+    <rect x="0" y="80" width="30" height="10" class="secondary" />
+    <rect x="70" y="80" width="30" height="10" class="secondary" />
+  </g>
+  
+  <!-- Road -->
+  <g transform="translate(0, 350)">
+    <rect x="0" y="0" width="500" height="20" class="secondary" />
+    <rect x="20" y="8" width="40" height="4" class="accent" />
+    <rect x="100" y="8" width="40" height="4" class="accent" />
+    <rect x="180" y="8" width="40" height="4" class="accent" />
+    <rect x="260" y="8" width="40" height="4" class="accent" />
+    <rect x="340" y="8" width="40" height="4" class="accent" />
+    <rect x="420" y="8" width="40" height="4" class="accent" />
+  </g>
+  
+  <!-- Speed Lines -->
+  <g transform="translate(0, 0)">
+    <path d="M400,200 Q450,180 480,200" stroke-width="5" stroke="#00ccbc" fill="none" />
+    <path d="M390,250 Q440,230 470,250" stroke-width="5" stroke="#00ccbc" fill="none" />
+    <path d="M410,150 Q460,130 490,150" stroke-width="5" stroke="#00ccbc" fill="none" />
+  </g>
+</svg> 

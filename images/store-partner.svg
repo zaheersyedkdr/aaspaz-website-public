@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="400" viewBox="0 0 500 400">
+  <style>
+    .primary { fill: #00ccbc; }
+    .secondary { fill: #2e3333; }
+    .accent { fill: #f9fafa; }
+    .shadow { fill: rgba(0,0,0,0.1); }
+  </style>
+  
+  <!-- Store Building -->
+  <g transform="translate(100, 100)">
+    <!-- Main Building -->
+    <rect x="0" y="0" width="300" height="200" rx="5" class="accent" />
+    <rect x="0" y="180" width="300" height="20" class="secondary" />
+    
+    <!-- Roof -->
+    <polygon points="0,0 150,-50 300,0" class="primary" />
+    
+    <!-- Door -->
+    <rect x="125" y="120" width="50" height="80" rx="5" class="primary" />
+    <circle cx="165" cy="160" r="5" class="secondary" />
+    
+    <!-- Windows -->
+    <rect x="30" y="50" width="60" height="60" rx="5" class="primary" opacity="0.8" />
+    <rect x="35" y="55" width="50" height="50" rx="3" class="accent" />
+    
+    <rect x="210" y="50" width="60" height="60" rx="5" class="primary" opacity="0.8" />
+    <rect x="215" y="55" width="50" height="50" rx="3" class="accent" />
+    
+    <!-- Store Sign -->
+    <rect x="75" y="20" width="150" height="40" rx="5" class="secondary" />
+    <text x="150" y="47" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#ffffff">STORE</text>
+    
+    <!-- Shadow -->
+    <ellipse cx="150" cy="220" rx="150" ry="20" class="shadow" />
+  </g>
+  
+  <!-- Delivery Person -->
+  <g transform="translate(50, 220)">
+    <circle cx="30" cy="30" r="25" class="primary" />
+    <circle cx="22" cy="25" r="4" class="secondary" />
+    <circle cx="38" cy="25" r="4" class="secondary" />
+    <path d="M22,38 Q30,45 38,38" stroke-width="2" stroke="#2e3333" fill="none" />
+    
+    <rect x="15" y="55" width="30" height="50" class="secondary" />
+    <rect x="8" y="105" width="15" height="35" class="secondary" />
+    <rect x="37" y="105" width="15" height="35" class="secondary" />
+    
+    <!-- Delivery Bag -->
+    <rect x="45" y="65" width="30" height="35" rx="5" class="primary" />
+    <rect x="50" y="70" width="20" height="25" rx="3" class="accent" />
+    <rect x="55" y="55" width="10" height="10" class="primary" />
+  </g>
+  
+  <!-- Store Owner -->
+  <g transform="translate(400, 220)">
+    <circle cx="30" cy="30" r="25" class="secondary" />
+    <circle cx="22" cy="25" r="4" class="accent" />
+    <circle cx="38" cy="25" r="4" class="accent" />
+    <path d="M22,38 Q30,45 38,38" stroke-width="2" stroke="#f9fafa" fill="none" />
+    
+    <rect x="15" y="55" width="30" height="50" class="primary" />
+    <rect x="8" y="105" width="15" height="35" class="primary" />
+    <rect x="37" y="105" width="15" height="35" class="primary" />
+    
+    <!-- Apron -->
+    <polygon points="15,65 45,65 50,105 10,105" class="secondary" />
+  </g>
+  
+  <!-- Connection Line -->
+  <g transform="translate(0, 0)">
+    <path d="M110,250 Q250,200 390,250" stroke-width="4" stroke="#00ccbc" stroke-dasharray="10,5" fill="none" />
+    <circle cx="110" cy="250" r="8" class="primary" />
+    <circle cx="390" cy="250" r="8" class="primary" />
+  </g>
+  
+  <!-- Partnership Symbol -->
+  <g transform="translate(230, 170)">
+    <circle cx="20" cy="20" r="35" class="accent" opacity="0.9" />
+    <path d="M10,20 L30,20 M20,10 L20,30" stroke-width="6" stroke="#00ccbc" />
+  </g>
+</svg> 

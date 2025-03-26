@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Aaspaz Food Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="moving-banner">
+        <div class="banner-content">
+            🚀 Get in touch with us! • 24/7 Customer Support • Quick Response Time • Your satisfaction is our priority
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">Aaspaz</a>
+            <nav class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+                <!-- <a href="faq.html">FAQs</a> -->
+                <a href="../index.html#download" class="btn-secondary">Download App</a>
+                <a href="partner.html" class="btn-primary">Partner with us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>We're here to help! Get in touch with our team for any questions or support.</p>
+            </div>
+        </section>
+
+        <section class="partner-section">
+            <div class="container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>+91 9999999999</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>admin@aaspaz.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>Pune, Maharashtra, India</p>
+                    </div>
+                </div>
+
+                <div class="two-column-grid">
+                    <div class="form-column">
+                        <form class="contact-form" action="mailto:admin@aaspaz.com" method="GET" enctype="text/plain">
+                            <h2>Send Us a Message</h2>
+                            <div class="form-group">
+                                <label class="form-label" for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="subject">Subject *</label>
+                                <input type="text" id="subject" name="subject" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="benefits-card">
+                        <h3>Why Choose Aaspaz?</h3>
+                        <ul class="benefits-list">
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>24/7 Support</h4>
+                                    <p>Our dedicated team is available round the clock to assist you with any queries or concerns.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-truck"></i>
+                                <div>
+                                    <h4>Fast Response</h4>
+                                    <p>We ensure quick response times and efficient resolution of your inquiries.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <h4>Expert Team</h4>
+                                    <p>Our experienced team understands your needs and provides professional assistance.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <h4>Secure Communication</h4>
+                                    <p>Your information is safe with us. We maintain strict confidentiality standards.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Add event listener to format the subject line
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            const subject = document.querySelector('#subject').value;
+            this.action = `mailto:admin@aaspaz.com?subject=[QUERY] - ${encodeURIComponent(subject)}`;
+        });
+    </script>
+</body>
+</html> 
