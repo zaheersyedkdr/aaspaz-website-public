@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li><a href="${basePath}pages/about.html">About Us</a></li>
                                     <li><a href="${basePath}pages/careers.html">Careers</a></li>
                                     <li><a href="${basePath}pages/blog.html">Blog</a></li>
-                                    <li><a href="${basePath}pages/partner-select.html">Partner with Us</a></li>
+                                    <li><a href="${basePath}index.html/#partner_with_us">Partner with Us</a></li>
                                 </ul>
                             </div>
                             <div class="footer-section">
