@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="container">
                     <div class="footer-top-content">
                         <div class="footer-logo">
-                            <a href="${basePath}index.html">Aaspaz</a>
+                            <a href="${basePath}index.html"><img src="${basePath}images/logos/entry_aaspaz.svg" alt="Aaspaz"></a>
                             <p>Your trusted 10-minute grocery delivery service</p>
                             <div class="social-links">
                                 <a href="#"><i class="fab fa-facebook"></i></a>
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li><a href="${basePath}pages/about.html">About Us</a></li>
                                     <li><a href="${basePath}pages/careers.html">Careers</a></li>
                                     <li><a href="${basePath}pages/blog.html">Blog</a></li>
-                                    <li><a href="${basePath}pages/partner.html">Partner with Us</a></li>
+                                    <li><a href="${basePath}pages/partner-select.html">Partner with Us</a></li>
                                 </ul>
                             </div>
                             <div class="footer-section">
